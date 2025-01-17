@@ -5,6 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use App\Models\Treatment;
+use Illuminate\Support\Facades\File;
+
 class TreatmentsSeeder extends Seeder
 {
     /**
@@ -12,6 +15,15 @@ class TreatmentsSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $json = File::get('database/data/treatments.json');
+        $treatments = json_decode($json);
+        foreach ($treatments as $treatment) {
+            Treatment::create([
+                'name' => $treatment->name,
+                'description' => $treatment->description,
+                'price' => $treatment->price,
+                'image' => $treatment->image,
+            ]);
+        }
     }
 }

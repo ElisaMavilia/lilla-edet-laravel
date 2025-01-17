@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Undersökning",
+        "description": "A professional teeth whitening procedure to remove stains and brighten your smile.",
+        "price": null,
+        "image": null
+    },
+    {
+        "name": "Allmänn Tandvård",
+        "description": "A professional teeth whitening procedure to remove stains and brighten your smile.",
+        "price": null,
+        "image": null
+    },
+    {
+        "name": "Regnöring",
+        "description": "A procedure to treat infected or damaged teeth, restoring them to health.",
+        "price": 599.99,
+        "image": null
+    },
+    {
+        "name": "Blekning",
+        "description": "A routine dental cleaning to remove plaque, tartar, and maintain oral hygiene.",
+        "price": 150.0,
+        "image": null
+    },
+    {
+        "name": "Protetik",
+        "description": "A surgical procedure to replace a missing tooth with a titanium implant.",
+        "price": 1200.0,
+        "image": null
+    },
+    {
+        "name": "Implantat",
+        "description": "Braces to straighten teeth and improve overall dental health.",
+        "price": 2500.0,
+        "image": null
+    }
+]
