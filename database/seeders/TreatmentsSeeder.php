@@ -15,7 +15,7 @@ class TreatmentsSeeder extends Seeder
      */
     public function run(): void
     {
-        $json = File::get('database/data/treatments.json');
+        $json = File::get(base_path(env('JSON_TREATM', 'database/data/treatments.json')));
         $treatments = json_decode($json);
         foreach ($treatments as $treatment) {
             Treatment::create([

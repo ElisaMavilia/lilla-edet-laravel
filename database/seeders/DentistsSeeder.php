@@ -14,7 +14,7 @@ class DentistsSeeder extends Seeder
      */
     public function run(): void
     {
-        $json = File::get('database/data/dentists.json');
+        $json = File::get(base_path(env('JSON_DENT', 'database/data/dentists.json')));
         $dentists = json_decode($json);
         foreach ($dentists as $dentist) {
             Dentist::create([
