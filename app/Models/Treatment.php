@@ -24,6 +24,24 @@ class Treatment extends Model
         return $slug;
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Evento per la creazione
+        static::creating(function ($treatment) {
+            if (empty($treatment->slug)) {
+                $treatment->slug = self::generateSlug($treatment->name);
+            }
+        });
+
+        // Evento per l'aggiornamento
+        static::updating(function ($treatment) {
+            if ($treatment->isDirty('name')) { // Rigenera lo slug solo se il nome cambia
+                $treatment->slug = self::generateSlug($treatment->name);
+            }
+        });
+    }
 
     public function dentists() 
     {

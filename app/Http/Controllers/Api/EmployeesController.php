@@ -11,7 +11,7 @@ class EmployeesController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        dd($employees);
+        /* dd($employees); */
         return response()->json([
             'success' => true,
             'status' => 'success',

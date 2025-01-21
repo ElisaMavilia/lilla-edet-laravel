@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Treatments;
+use App\Models\Treatment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TreatmentsController extends Controller
 {
@@ -34,15 +35,28 @@ class TreatmentsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Treatments $treatments)
+    public function show($slug)
     {
-        //
+        $treatment = Treatment::where('slug', $slug)->first();//eager loading
+        dd($treatment);
+        if ($treatment){ //inserire controllo per verificare che il treatment esista
+            return response()->json([
+                'success' => true,
+                'results' => $treatment,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false, //se il treatment non esiste restituisce un errore e success = false
+                'results' => 'Treatment not found',
+            ]);
+        }
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Treatments $treatments)
+    public function edit(Treatment $treatments)
     {
         //
     }
@@ -50,7 +64,7 @@ class TreatmentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Treatments $treatments)
+    public function update(Request $request, Treatment $treatments)
     {
         //
     }
@@ -58,7 +72,7 @@ class TreatmentsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Treatments $treatments)
+    public function destroy(Treatment $treatments)
     {
         //
     }

@@ -11,7 +11,7 @@ class DentistsController extends Controller
     public function index()
     {
         $dentists = Dentist::all();
-        dd($dentists);
+        /* dd($dentists); */
         return response()->json([
             'success' => true,
             'status' => 'success',

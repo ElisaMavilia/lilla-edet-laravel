@@ -24,3 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('employees', [EmployeesController::class, 'index']);
 Route::get('dentists', [DentistsController::class, 'index']);
 Route::get('treatments', [TreatmentsController::class, 'index']);
+Route::get('admin/treatments/{slug}', [TreatmentsController::class, 'show']);
