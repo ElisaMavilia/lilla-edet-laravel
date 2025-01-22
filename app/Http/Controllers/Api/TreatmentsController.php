@@ -19,4 +19,24 @@ class TreatmentsController extends Controller
             'results' => $treatments
         ], 200);
     }
+
+    public function show($slug)
+    {
+        $treatment = Treatment::where('slug', $slug)
+        ->first();
+        if($treatment){
+            return response()->json([
+                'status' => 'success',
+                'message' => 'OK',
+                'results' => $treatment
+            ],200);
+        } else {
+            return response()->json([
+                'status' => 'error',	
+                'message' => 'Error'
+            ],404);
+        }
+    }
+    
+    
 }
