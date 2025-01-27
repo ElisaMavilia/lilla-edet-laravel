@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\DentistsController;
 use App\Http\Controllers\Api\EmployeesController;
 use App\Http\Controllers\Api\TreatmentsController;
 use App\Http\Controllers\Api\AboutUsController;
+use App\Http\Controllers\Api\LeadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,5 @@ Route::get('dentists', [DentistsController::class, 'index']);
 Route::get('treatments', [TreatmentsController::class, 'index']);
 Route::get('behandlingar/{slug}', [TreatmentsController::class, 'show']);
 Route::get('om-oss ', [AboutUsController::class, 'index']);
+
+Route::post('kontakta-oss', [LeadController::class, 'store']);
