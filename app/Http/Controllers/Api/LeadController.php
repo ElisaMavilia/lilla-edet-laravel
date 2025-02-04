@@ -39,9 +39,9 @@ class LeadController extends Controller
 
         /* INSERT HERE VALIDATIONS */
         $validator = Validator::make($data, [
-            'name' => 'required',
-            'address' => 'required|email',
-            'message' => 'required'
+            'name' => 'required|string|min:2|max:255',
+            'address' => 'required|email|max:255',
+            'message' => 'required|string|min:5'
         ]);
 
         if ($validator->fails()) {
@@ -65,11 +65,29 @@ class LeadController extends Controller
         return response()->json([ // restituisce una risposta dal controller al client che ha effettuato la richiestas HTTP, l'array associativo passato come argomento a questo metodo viene convertito in JSON
             'status' => 'success',
             'message' => 'Ok',
+            'lead_id' => $lead->id, // Ritorna solo l'ID
         ], 200);
     }
 
     
+    public function latest()
+    {
+        $lead = Lead::latest()->first(); // Ottiene l'ultimo lead registrato
 
+        if (!$lead) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No lead found',
+                'result' => null,
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Last lead found',
+            'result' => $lead,
+        ], 200);
+    }
     /**
      * Display the specified resource.
      */

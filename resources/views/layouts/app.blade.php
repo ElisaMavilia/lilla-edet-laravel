@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
 
@@ -21,8 +22,7 @@
 
 <body>
     <div id="app">
-
-
+   <!--  <contact-component :csrf-token="'{{ csrf_token() }}'"></contact-component>  --><!-- Aggiunto componente che poi passo tramite prop su vue -->
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">

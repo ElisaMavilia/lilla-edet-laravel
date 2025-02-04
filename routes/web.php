@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ComicController;
 use App\Http\Controllers\Admin\TreatmentsController;
 
 use Illuminate\Support\Facades\Route;
@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

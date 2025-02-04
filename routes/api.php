@@ -28,5 +28,7 @@ Route::get('dentists', [DentistsController::class, 'index']);
 Route::get('treatments', [TreatmentsController::class, 'index']);
 Route::get('behandlingar/{slug}', [TreatmentsController::class, 'show']);
 Route::get('om-oss ', [AboutUsController::class, 'index']);
+Route::post('kontakta-oss', [LeadController::class, 'store']) ;
+Route::get('latest-lead', [LeadController::class, 'latest']);
 
-Route::post('kontakta-oss', [LeadController::class, 'store']);
+

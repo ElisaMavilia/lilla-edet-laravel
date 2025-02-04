@@ -7,7 +7,7 @@
 </head>
 <body>
     
-<h1> Hello Lilla Edet Tandläkarcenter!</h1>
+<h1> Hej Lilla Edet Tandläkarcenter!</h1>
 <div> Vi har fått följande meddelande: <br>
     <strong>Name:</strong><span> {{ $lead->name }}</span><br>
     <strong>Från e-mail:</strong><span> {{ $lead->address }}</span><br>
