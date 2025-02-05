@@ -29,7 +29,7 @@ class NewMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope( //crea un oggetto envelope che contiene i dati necessari per creare l'email
-            subject: 'Ny Mail',
+            subject: 'Nytt email från Hemsidan',
             replyTo: $this->lead->address // email del mittente: il valore di ritorno è un oggetto della classe Envelope
         );
     }
