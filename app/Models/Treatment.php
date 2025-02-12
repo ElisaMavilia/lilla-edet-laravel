@@ -13,6 +13,7 @@ class Treatment extends Model
 
     protected $guarded = [];
 
+
     public static function generateSlug($title)
     {
         $slug = Str::slug($title, '-');

@@ -20,9 +20,8 @@ class TreatmentsSeeder extends Seeder
         foreach ($treatments as $treatment) {
             Treatment::create([
                 'name' => $treatment->name,
-                'description' => $treatment->description,
-                'price' => $treatment->price,
                 'image' => $treatment->image,
+                'description' => $treatment->description
             ]);
         }
     }

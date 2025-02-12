@@ -11,7 +11,9 @@ class TreatmentsController extends Controller
     public function index()
     {
         $treatments = Treatment::all();
-       /*  dd($treatments); */
+       
+        //dd($treatments);
+    
         return response()->json([
             'success' => true,
             'status' => 'success',
@@ -19,6 +21,7 @@ class TreatmentsController extends Controller
             'results' => $treatments
         ], 200);
     }
+    
 
     public function show($slug)
     {
