@@ -6,6 +6,7 @@ use App\Http\Requests\StoreGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
 use App\Models\Gallery;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -15,6 +16,10 @@ class GalleryController extends Controller
     public function index()
     {
         $galleries = Gallery::all();
+
+        foreach ($galleries as $gallery) {
+            $gallery->image = Storage::url($gallery->image); // Returns the public path to the file
+        }
        
         //dd($treatments);
     
