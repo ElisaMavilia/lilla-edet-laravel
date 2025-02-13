@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\StoreGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
 use App\Models\Gallery;
+use App\Http\Controllers\Controller;
 
 class GalleryController extends Controller
 {
@@ -13,7 +14,16 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $galleries = Gallery::all();
+       
+        //dd($treatments);
+    
+        return response()->json([
+            'success' => true,
+            'status' => 'success',
+            'message' => 'Ok',
+            'results' => $galleries
+        ], 200);
     }
 
     /**
@@ -29,7 +39,7 @@ class GalleryController extends Controller
      */
     public function store(StoreGalleryRequest $request)
     {
-        //
+        
     }
 
     /**
