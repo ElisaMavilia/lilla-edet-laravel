@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\AboutUsController;
 use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\PricesController;
 use App\Http\Controllers\Api\GalleryController;
+use App\Models\Treatment;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,15 @@ Route::get('employees', [EmployeesController::class, 'index']);
 Route::get('dentists', [DentistsController::class, 'index']);
 Route::get('treatments', [TreatmentsController::class, 'index']);
 Route::get('behandlingar/{slug}', [TreatmentsController::class, 'show']);
+Route::get('validate-slug/{slug}', function ($slug) {
+    // Verifica se lo slug esiste nel database
+    $valid = Treatment::where('slug', $slug)->exists();
+
+    return response()->json([
+        'isValid' => $valid
+    ]);
+});
+
 Route::get('om-oss ', [AboutUsController::class, 'index']);
 Route::post('kontakta-oss', [LeadController::class, 'store']) ;
 Route::get('prislista', [PricesController::class, 'index']);
