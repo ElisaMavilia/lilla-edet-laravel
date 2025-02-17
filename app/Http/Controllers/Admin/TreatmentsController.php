@@ -29,7 +29,23 @@ class TreatmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required',
+            'detail_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        $data = $request->all();
+    
+        // Gestione upload immagine
+        if ($request->hasFile('detail_image')) {
+            $imagePath = $request->file('detail_image')->store('treatments', 'public');
+            $data['detail_image'] = $imagePath;
+        }
+    
+        Treatment::create($data);
+    
+        return redirect()->route('treatments.index')->with('success', 'Trattamento aggiunto con successo!');
     }
 
     /**
@@ -38,7 +54,7 @@ class TreatmentsController extends Controller
     public function show($slug)
     {
         $treatment = Treatment::where('slug', $slug)->first();//eager loading
-        dd($treatment);
+        //dd($treatment);
         if ($treatment){ //inserire controllo per verificare che il treatment esista
             return response()->json([
                 'success' => true,
