@@ -7,7 +7,9 @@ use App\Http\Controllers\Api\AboutUsController;
 use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\PricesController;
 use App\Http\Controllers\Api\GalleryController;
+use App\Http\Controllers\Api\CsrfController;
 use App\Models\Treatment;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +47,9 @@ Route::post('kontakta-oss', [LeadController::class, 'store']) ;
 Route::get('prislista', [PricesController::class, 'index']);
 Route::get('galleri', [GalleryController::class, 'index']);
 Route::get('latest-lead', [LeadController::class, 'latest']);
+
+Route::get('/csrf-token', [CsrfController::class, 'getToken']);
+
 
 
 
